@@ -1,0 +1,23 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env", //转译包
+      {
+        "modules": false, //默认都是支持 CommonJS
+        "useBuiltIns": "usage",
+        "corejs": {
+          "version": 3,
+          "proposals": true // 使用尚在“提议”阶段特性的 polyfill
+        }
+      }
+    ],
+    "@babel/preset-react",
+    "@babel/preset-typescript"
+  ],
+  "comments": false, //不产生注释
+  "plugins": [
+    [
+      "@babel/plugin-transform-runtime"
+    ]
+  ]
+}
