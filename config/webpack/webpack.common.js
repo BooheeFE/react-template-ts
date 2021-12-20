@@ -7,7 +7,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { PROJECT_PATH } = require('../constant');
 const envConfig = require('../env');
-const getCssLoaders = () => {
+const getCssLoaders = importLoaders => {
   const cssLoaders = [
     isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
     {
@@ -16,7 +16,8 @@ const getCssLoaders = () => {
         modules: {
           localIdentName: '[local]--[hash:base64:5]'
         },
-        sourceMap: isDevelopment
+        sourceMap: isDevelopment,
+        importLoaders
       }
     },
     {
@@ -64,9 +65,21 @@ module.exports = {
         exclude: /node_modules/
       },
       {
+        test: /\.less$/,
+        use: [
+          ...getCssLoaders(2),
+          {
+            loader: 'less-loader',
+            options: {
+              sourceMap: isDevelopment
+            }
+          }
+        ]
+      },
+      {
         test: /\.scss$/,
         use: [
-          ...getCssLoaders(),
+          ...getCssLoaders(2),
           {
             loader: 'sass-loader',
             options: {
@@ -77,7 +90,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [...getCssLoaders()]
+        use: [...getCssLoaders(1)]
       }
     ]
   },
