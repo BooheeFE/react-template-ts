@@ -18,7 +18,9 @@
       "src/*": ["src/*"],
       "pages/*": ["src/pages/*"],
       "components/*": ["src/components/*"],
-      "tools/*": ["src/tools/*"]
+      "tools/*": ["src/tools/*"],
+      "consts": ["src/tools/consts"],
+      "utils": ["src/tools/utils"]
     },
 
     // 实验性选项

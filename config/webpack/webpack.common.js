@@ -99,7 +99,9 @@ module.exports = {
       src: path.resolve(PROJECT_PATH, './src'),
       pages: path.resolve(PROJECT_PATH, './src/pages'),
       components: path.resolve(PROJECT_PATH, './src/components'),
-      tools: path.resolve(PROJECT_PATH, './src/tools')
+      tools: path.resolve(PROJECT_PATH, './src/tools'),
+      utils: path.resolve(PROJECT_PATH, './src/tools/utils'),
+      consts: path.resolve(PROJECT_PATH, './src/tools/consts')
     },
     extensions: ['.tsx', '.ts', '.js', '.json']
   },
