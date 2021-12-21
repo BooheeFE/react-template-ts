@@ -40,3 +40,5 @@ https://charles-stover.medium.com/resolving-prettier-react-context-getphysicalfi
   yarn prettier-format 根据配置格式化全局文件
   yarn lint 对代码使用eslint进行lint
 ```
+
+##### 项目中使用 @babel/preset-typescript 没有使用 ts-loader 的原因是 经过实际编译考察 项目为业务逻辑相关 使用 @babel/preset-typescript 配置简单打包速度较快 不需要再去配置 ts-loader 的东西增加心智负担
