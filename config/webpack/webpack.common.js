@@ -7,6 +7,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { PROJECT_PATH } = require('../constant');
 const envConfig = require('../env');
+// TODO: 考虑是否添加 esbuild-loader 以及 ProvidePlugin全局变量
 const getCssLoaders = importLoaders => {
   const cssLoaders = [
     isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
