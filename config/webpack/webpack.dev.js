@@ -1,4 +1,3 @@
-const webpack = require('webpack');
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
@@ -9,7 +8,6 @@ module.exports = {
     colors: true
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
     new MiniCssExtractPlugin({
       filename: 'css/[name].[contenthash:8].css',
       chunkFilename: 'css/[name].[contenthash:8].chunk.css'
@@ -24,7 +22,7 @@ module.exports = {
     }
   },
   mode: 'development',
-  devtool: 'cheap-module-source-map',
+  devtool: 'source-map',
   output: {
     path: path.resolve(PROJECT_PATH, './dist'),
     publicPath: '/'
@@ -35,7 +33,6 @@ module.exports = {
       reconnect: 5
     },
     historyApiFallback: true,
-    open: true,
     host: SERVER_HOST,
     hot: true
   },
