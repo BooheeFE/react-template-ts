@@ -35,12 +35,6 @@ const getCssLoaders = importLoaders => {
 };
 
 module.exports = {
-  cache: {
-    type: 'filesystem',
-    buildDependencies: {
-      config: [__filename]
-    }
-  },
   entry: {
     app: path.resolve(PROJECT_PATH, './src/index.tsx')
   },
