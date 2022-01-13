@@ -44,6 +44,11 @@ module.exports = {
   entry: {
     app: path.resolve(PROJECT_PATH, './src/index.tsx')
   },
+  devtool: 'eval-cheap-module-source-map',
+  output: {
+    publicPath: '/',
+    sourceMapFilename: 'sourceMap/[name].[contenthash].js.map'
+  },
   module: {
     rules: [
       {
@@ -60,7 +65,7 @@ module.exports = {
         type: 'asset/resource'
       },
       {
-        test: /\.(tsx?|js)$/,
+        test: /\.(tsx?|ts｜js)$/,
         loader: 'babel-loader',
         options: { cacheDirectory: true },
         exclude: /node_modules/
@@ -91,7 +96,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [...getCssLoaders(1)]
+        use: ['style-loader', 'css-loader']
       }
     ]
   },
@@ -109,7 +114,7 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin(envConfig),
     new WebpackBar({
-      name: 'OKK!!!',
+      name: 'Boohee Web',
       color: '#52c41a'
     }),
     new ForkTsCheckerWebpackPlugin({

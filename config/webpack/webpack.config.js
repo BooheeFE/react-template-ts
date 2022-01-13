@@ -1,12 +1,11 @@
-const common = require('./webpack.common');
-const { isDevelopment } = require('../env');
+const common = require('./webpack.common.js');
 const { merge } = require('webpack-merge');
 
 let config;
-// 可以根据具体情况进行自定义 config
-if (isDevelopment) {
+if ((process.env.CODE_ENV || process.env.NODE_ENV) === 'development') {
   config = require('./webpack.dev');
 } else {
   config = require('./webpack.prod');
 }
+
 module.exports = merge(common, config);

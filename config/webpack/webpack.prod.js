@@ -15,11 +15,12 @@ const config = {
   },
   target: 'browserslist',
   output: {
-    clean: true, // Clean the output directory before emit.
-    filename: 'script/[name].[contenthash:8].js',
-    chunkFilename: 'chunkScript/[name].[chunkhash].js',
+    clean: true,
     path: path.resolve(PROJECT_PATH, './dist'),
-    assetModuleFilename: 'images/[name].[contenthash:8].[ext]'
+    filename: 'script/[name].[contenthash].js',
+    chunkFilename: 'chunkScript/[name].[chunkhash].js',
+    assetModuleFilename: 'asset/[name].[contenthash:8].[ext]',
+    sourceMapFilename: 'sourceMap/[name].[contenthash].js.map'
   },
   plugins: [
     new MiniCssExtractPlugin({
@@ -39,16 +40,15 @@ const config = {
       new TerserPlugin({
         extractComments: false,
         terserOptions: {
-          compress: { pure_funcs: ['console.log'] }
+          compress: process.env.NODE_ENV === 'production' && { pure_funcs: ['console.log'] }
         }
       })
     ]
   }
 };
-
 // 因为rc环境与生产环境打包 配置都使用prod的配置，所以通过环境变量进行简单配置的区分
-if (process.env.API_ENV === 'rc') {
-  config.devtool = 'source-map';
-  config.output.sourceMapFilename = 'sourceMap/[name].[contenthash].js.map';
+if (process.env.NODE_ENV === 'production') {
+  config.devtool = false;// 不需要 source-map
+  // config.output.publicPath = '';
 }
 module.exports = config;

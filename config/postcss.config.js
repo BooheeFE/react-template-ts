@@ -1,15 +1,6 @@
 const { isProduction } = require('./env');
 module.exports = {
-  // `api.file` - 文件路径
-  // `api.mode` - webpack 的 `mode` 属性值，请查阅 https://webpack.js.org/configuration/mode/
-  // `api.webpackLoaderContext` - 在复杂情况下使用的 loader 上下文
-  // `api.env` - `api.mode` 的别名，与 `postcss-cli` 兼容
-  // `api.options` - `postcssOptions` 的选项
-  // 你可以指定下面提到的所有选项 https://postcss.org/api/#processoptions
-  // parser: 'sugarss',
-  // PostCSS 插件
   plugins: [
-    // 开发环境一般用chrom不会有问题，防止开发环境下看样式有一堆前缀影响查看，因此只在生产环境使用
     isProduction && [
       'postcss-preset-env',
       {
